@@ -14,7 +14,7 @@ default_args = {
     'email_on_retry': False,
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
-    'start_date': datetime(2024, 12, 14),
+    'start_date': datetime(2024, 12, 26),
 }
 
 dag = DAG(
@@ -70,7 +70,7 @@ CLUSTER_NAME = config['CLUSTER_NAME']
 PROJECT_ID = config['PROJECT_ID']
 REGION = config['REGION']
 
-pyspark_job_file_path = 'gs://airflow-projetcs-gds/airflow-project-2/spark_code/orders_data_process.py'
+pyspark_job_file_path = 'gs://airflow-projets-gds/AIRFLOW_PROJECT_2/spark_code/orders_data_process.py'
 
 submit_pyspark_job = DataprocSubmitPySparkJobOperator(
     task_id='submit_pyspark_job',

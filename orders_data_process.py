@@ -6,7 +6,7 @@ def main(date):
     spark = SparkSession.builder.appName("DataprocOrderProcessing").getOrCreate()
 
     # Define the path where the files are located
-    input_path = f"gs://airflow-projetcs-gds/airflow-project-2/data/orders_{date}.csv"
+    input_path = f"gs://airflow-projets-gds/AIRFLOW_PROJECT_2/data/orders_{date}.csv"
     
     # Read CSV files
     df = spark.read.csv(input_path, header=True, inferSchema=True)
@@ -15,7 +15,7 @@ def main(date):
     df_filtered = df.filter(df.order_status == "Completed")
 
     # Write back to GCS with the date naming convention
-    output_path = f"gs://airflow-projetcs-gds/airflow-project-2/output/processed_orders_{date}"
+    output_path = f"gs://airflow-projets-gds/AIRFLOW_PROJECT_2/output/processed_orders_{date}"
     df_filtered.write.csv(output_path, mode="overwrite", header=True)
 
     spark.stop()
